@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/App_AllForOne.iml" filepath="$PROJECT_DIR$/.idea/modules/App_AllForOne.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/App_AllForOne.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/App_AllForOne.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/App_AllForOne.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/App_AllForOne.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/App_AllForOne.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/App_AllForOne.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/App_AllForOne.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/App_AllForOne.app.unitTest.iml" />
+    </modules>
+  </component>
+</project>
