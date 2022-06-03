@@ -8,9 +8,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.android.app_allforone.R;
-import com.android.app_allforone.fragment.LoginFragment;
+import com.android.app_allforone.databinding.ActivityMainBinding;
+import com.android.app_allforone.fragment.HomePageFragment;
 import com.android.app_allforone.models.User;
 import com.android.app_allforone.utils.Check;
 import com.google.firebase.auth.FirebaseAuth;
@@ -46,7 +49,7 @@ public class SignUpActivity extends AppCompatActivity {
     private void addViews(){
         editTextFName = (EditText) findViewById(R.id.editTextFname);
         editTextLName = (EditText) findViewById(R.id.editTextLname);
-        editTextEmail = (EditText) findViewById(R.id.editTextEmail);
+        editTextEmail = (EditText) findViewById(R.id.textViewEmailInput);
         editTextPass = (EditText) findViewById(R.id.editTextPass);
         editTextConfPass = (EditText) findViewById(R.id.editTextRepass);
         btnSignUp = (Button) findViewById(R.id.btnSignUp);
@@ -73,10 +76,9 @@ public class SignUpActivity extends AppCompatActivity {
         if (Check.checkEmpty(fName, editTextFName) &&
                 Check.checkEmpty(lName, editTextLName) &&
                 Check.checkEmpty(email, editTextEmail) &&
-                Check.checkEmpty(lName, editTextLName) &&
                 Check.checkEmpty(pass, editTextPass) &&
                 Check.checkEmpty(confPass, editTextConfPass) &&
-                Check.checkFormat(pass, editTextEmail) &&
+                Check.checkFormat(email, editTextEmail) &&
                 Check.checkConfPass(pass, confPass, editTextConfPass)){
             firebaseAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
@@ -86,8 +88,22 @@ public class SignUpActivity extends AppCompatActivity {
                                 if (task1.isSuccessful())
                                 {
                                     Toast.makeText(SignUpActivity.this,"Register successfully",Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                                    intent.putExtra("email", email);
 
-                                    startActivity(new Intent(SignUpActivity.this, LoginFragment.class));
+                                    ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+                                    setContentView(binding.getRoot());
+
+                                    HomePageFragment homePageFragment = new HomePageFragment();
+
+                                    //initialize bundle and put value then pass argument
+
+                                    FragmentManager fragmentManager = getSupportFragmentManager();
+                                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                    fragmentTransaction.replace(R.id.frame_layout, homePageFragment);
+                                    fragmentTransaction.commit();
+
+                                    startActivity(intent);
                                 }
                                 else
                                 {

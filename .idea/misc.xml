@@ -83,22 +83,24 @@
         <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/layout/activity_add_movie.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/layout/activity_add_new_movie.xml" value="0.33" />
         <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/layout/activity_more_movie.xml" value="0.25" />
         <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/layout/activity_movie_detail.xml" value="0.24863883847549909" />
         <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/layout/activity_searched_movie.xml" value="0.33" />
         <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
         <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/layout/activity_test.xml" value="0.17844202898550723" />
         <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/layout/category_item.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/layout/fragment_add_new_movie.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/layout/fragment_home_page.xml" value="0.25" />
         <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/layout/fragment_login.xml" value="0.25" />
-        <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/layout/fragment_profile.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/layout/fragment_search.xml" value="0.33" />
         <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/layout/fragment_setting.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/layout/login_activity.xml" value="0.17844202898550723" />
         <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/layout/movie_item.xml" value="0.22" />
         <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/layout/search_item.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/layout/slide_item.xml" value="0.17831813576494426" />
-        <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/layout/stream_video_activity.xml" value="0.2702169625246548" />
+        <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/layout/stream_video_activity.xml" value="0.25" />
         <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/menu/bottom_nav_menu.xml" value="0.22" />
         <entry key="..\:/Users/chien/AndroidStudioProjects/App_AllForOne/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14" />
         <entry key="..\:/Work/Android/Android-Movie-Application-FinalExam/Movie-Application/app/src/main/res/drawable-anydpi/ic_play.xml" value="0.3635" />

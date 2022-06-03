@@ -3,7 +3,6 @@ package com.android.app_allforone.fragment;
 import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +21,6 @@ import com.android.app_allforone.adapters.MovieItemClickListener;
 import com.android.app_allforone.adapters.SliderPagerAdapter;
 import com.android.app_allforone.models.Movie;
 import com.android.app_allforone.ui.MovieDetailActivity;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -50,6 +48,33 @@ public class HomePageFragment extends Fragment implements MovieItemClickListener
         super.onCreate(savedInstanceState);
         databaseReference = FirebaseDatabase.getInstance().getReference("movies");
         storageReference = FirebaseStorage.getInstance().getReference("images/");
+
+//        ArrayList<String> cate = new ArrayList<>();
+//        cate.add("Hoạt hình");
+//        cate.add("Phiêu lưu");
+//        cate.add("Hài hước");
+//        Movie movie = new Movie("Frozen 2", "2019", "Nữ Hoàng Băng Giá 2 kể về câu chuyện cùng dấn thân vào một cuộc phiêu lưu xa xôi thú vị, hai chị em Anna và Elsa đi đến chốn rừng sâu để tìm kiếm sự thật về bí ẩn cổ xưa của vương quốc mình. Tất cả những gì Anna & Elsa biết về bản thân, lịch sử và gia đình của họ đều bị thử thách khi họ bị cuốn vào một chuyến đi đầy quả cảm đến với vùng đất phía bắc bí ẩn ngoài Arendelle được báo trước.", 103, "Mỹ", "", "", "", cate);
+//        databaseReference.child("Frozen 2").setValue(movie);
+//
+//        cate.clear();
+//        cate.add("Phiêu lưu");
+//        cate.add("Hành động");
+//        cate.add("Siêu anh hùng");
+//        cate.add("Viễn tưởng");
+//        movie = new Movie("Morbius", "2022", "Giáo Sư Ma Cà Rồng kể về một huyền thoại Marvel mới sắp lộ diện. Là ác nhân hay anh hùng? Sẽ phá hủy hay chữa lành thế giới này?", 104, "Mỹ", "", "", "", cate);
+//        databaseReference.child("Morbius").setValue(movie);
+//
+//        cate.clear();
+//        cate.add("Võ thuật");
+//        cate.add("Kiếm hiệp");
+//        movie = new Movie("Thần bút cửu long", "2022", "Thần Bút Cửu Long xoay quanh câu chuyện Thiếu Khang Kì Lăng điều tra và phá vỡ các cơ mật có sức mạnh ma thuật của “Cửu Long Bút”, theo chỉ dụ mật từ hoàng đế. Qúa trình điều tra, Kì Lăng phát hiện những thứ này có liên quan đến cái chết của cha mình. Sau nhiều nỗ lực, các cơ quan ở “Cửu Long Bút” đã được mở ra, nhờ vậy mà sự thật về vụ án cũng được mở ra. Cùng lúc đó, các thế lực ở triều đình bắt đầu những động thái ngầm và điều này khiến cho mọi chuyện trở nên cực kỳ phức tạp.", 75, "Trung Quốc", "", "", "", cate);
+//        databaseReference.child("Thần bút cửu long").setValue(movie);
+//
+//        cate.clear();
+//        cate.add("Khoa học");
+//        cate.add("Viễn tưởng");
+//        movie = new Movie("Song thể", "2022", "Cuộc Đấu Tay Đôi một người phụ nữ lựa chọn thủ tục nhân bản sau khi nhận được chẩn đoán giai đoạn cuối nhưng khi cô ấy phục hồi, nỗ lực để nhân bản của cô ấy ngừng hoạt động đã thất bại, dẫn đến một cuộc đấu tay đôi do tòa án ủy thác đến chết.", 94, "Mỹ", "", "", "", cate);
+//        databaseReference.child("Song thể").setValue(movie);
     }
 
     @Override
@@ -60,14 +85,6 @@ public class HomePageFragment extends Fragment implements MovieItemClickListener
         sliderPagerAdapter = new SliderPagerAdapter(getActivity(), listslide, HomePageFragment.this) ;
         sliderpaper.setAdapter(sliderPagerAdapter);
 
-        StorageReference s = storageReference.child("Frozen 2 small.jpg");
-        s.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                System.out.println(uri);
-            }
-        });
-
         //Set up time for changing the theme
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new SliderTimer(), 2000, 4000);
@@ -76,21 +93,6 @@ public class HomePageFragment extends Fragment implements MovieItemClickListener
 
         //Recyclerview Setup
         RecyclerView movieRV = view.findViewById((R.id.rv_movie));
-
-//        ArrayList<String> cate = new ArrayList<>();
-//        cate.add("Hoạt hình");
-//        cate.add("Hài hước");
-//        cate.add("Phiêu lưu");
-//        cate.add("Điện ảnh");
-//        Movie movie = new Movie("Frozen 2", "2019", "Nữ Hoàng Băng Giá 2 kể về câu chuyện cùng dấn thân vào một cuộc phiêu lưu xa xôi thú vị, hai chị em Anna và Elsa đi đến chốn rừng sâu để tìm kiếm sự thật về bí ẩn cổ xưa của vương quốc mình. Tất cả những gì Anna & Elsa biết về bản thân, lịch sử và gia đình của họ đều bị thử thách khi họ bị cuốn vào một chuyến đi đầy quả cảm đến với vùng đất phía bắc bí ẩn ngoài Arendelle được báo trước.", 103, "Mỹ", "https://firebasestorage.googleapis.com/v0/b/allforone-266c9.appspot.com/o/images%2FFrozen%202%20small.jpg?alt=media&token=72331344-d78a-45d8-913e-c1d1872eb6f6", "https://firebasestorage.googleapis.com/v0/b/allforone-266c9.appspot.com/o/images%2FFrozen%202.jpg?alt=media&token=0f51e97f-fd32-4522-ab99-45ca28b664c7", "https://firebasestorage.googleapis.com/v0/b/allforone-266c9.appspot.com/o/movies%2FFrozen%202%20-%20Thuyết%20Minh%20-%20MọtPhim%20TV.mp4?alt=media&token=090b9389-c125-44c0-bb5c-c169975b1e77", cate);
-//        databaseReference.child(movie.getName()).setValue(movie);
-//
-//        ArrayList<String> cate1 = new ArrayList<>();
-//        cate1.add("Hài hước");
-//        cate1.add("Phiêu lưu");
-//        cate1.add("Điện ảnh");
-//        Movie movie1 = new Movie("Test", "2019", "Nữ Hoàng Băng Giá 2 kể về câu chuyện cùng dấn thân vào một cuộc phiêu lưu xa xôi thú vị, hai chị em Anna và Elsa đi đến chốn rừng sâu để tìm kiếm sự thật về bí ẩn cổ xưa của vương quốc mình. Tất cả những gì Anna & Elsa biết về bản thân, lịch sử và gia đình của họ đều bị thử thách khi họ bị cuốn vào một chuyến đi đầy quả cảm đến với vùng đất phía bắc bí ẩn ngoài Arendelle được báo trước.", 103, "Mỹ", "https://firebasestorage.googleapis.com/v0/b/allforone-266c9.appspot.com/o/images%2FFrozen%202%20small.jpg?alt=media&token=72331344-d78a-45d8-913e-c1d1872eb6f6", "https://firebasestorage.googleapis.com/v0/b/allforone-266c9.appspot.com/o/images%2FFrozen%202.jpg?alt=media&token=0f51e97f-fd32-4522-ab99-45ca28b664c7", "https://firebasestorage.googleapis.com/v0/b/allforone-266c9.appspot.com/o/movies%2FFrozen%202%20-%20Thuyết%20Minh%20-%20MọtPhim%20TV.mp4?alt=media&token=090b9389-c125-44c0-bb5c-c169975b1e77", cate1);
-//        databaseReference.child(movie1.getName()).setValue(movie1);
 
         ArrayList<Movie> movies = (ArrayList<Movie>) getAllMovies();
         movieAdapter = new MovieAdapter(getActivity(), movies, HomePageFragment.this);
@@ -140,15 +142,12 @@ public class HomePageFragment extends Fragment implements MovieItemClickListener
         @Override
         public void run() {
             if(isAdded()){
-                getActivity().runOnUiThread(new Runnable(){
-                    @Override
-                    public void run(){
-                        if(sliderpaper.getCurrentItem() < (listslide.size() - 1)){
-                            sliderpaper.setCurrentItem(sliderpaper.getCurrentItem()+1);
-                        }
-                        else
-                            sliderpaper.setCurrentItem(0);
+                getActivity().runOnUiThread(() -> {
+                    if(sliderpaper.getCurrentItem() < (listslide.size() - 1)){
+                        sliderpaper.setCurrentItem(sliderpaper.getCurrentItem()+1);
                     }
+                    else
+                        sliderpaper.setCurrentItem(0);
                 });
             }
         }

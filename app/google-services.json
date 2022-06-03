@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "11854718420",
-    "project_id": "allforone-266c9",
-    "firebase_url": "https://allforone-266c9-default-rtdb.asia-southeast1.firebasedatabase.app/",
-    "storage_bucket": "allforone-266c9.appspot.com"
+    "project_number": "351506003178",
+    "project_id": "pivotal-shield-351113",
+    "firebase_url": "https://pivotal-shield-351113-default-rtdb.asia-southeast1.firebasedatabase.app/",
+    "storage_bucket": "pivotal-shield-351113.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:11854718420:android:bae6f6853fbfbabf9a2241",
+        "mobilesdk_app_id": "1:351506003178:android:f8a220be354a90bb0ad393",
         "android_client_info": {
           "package_name": "com.android.app_allforone"
         }
       },
       "oauth_client": [
         {
-          "client_id": "11854718420-be3j6gevvo03j1t38uhsoh05f7ciarb0.apps.googleusercontent.com",
+          "client_id": "351506003178-c0v3k5m5d2jmvqr48r83n785ars74heu.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDqh70TbV6_6qezRZXPMav0q5MeJwdWwd8"
+          "current_key": "AIzaSyBUPiNiW0vFM51HVpNAfwpbKis8VXVmzjc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "11854718420-be3j6gevvo03j1t38uhsoh05f7ciarb0.apps.googleusercontent.com",
+              "client_id": "351506003178-c0v3k5m5d2jmvqr48r83n785ars74heu.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

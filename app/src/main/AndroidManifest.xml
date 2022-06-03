@@ -15,9 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieApplication">
         <activity
-            android:name=".ui.addNewMovie"
-            android:exported="false" />
-        <activity
             android:name=".ui.MovieDetailActivity"
             android:exported="false" />
         <activity
