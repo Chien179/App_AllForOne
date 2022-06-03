@@ -1,5 +1,7 @@
 package com.android.app_allforone.models;
 
+import java.util.ArrayList;
+
 public class Movie {
     private String coverImage;
     private String desc;
@@ -8,20 +10,21 @@ public class Movie {
     private String link;
     private String name;
     private String nation;
-    private int release;
+    private String release;
+    private ArrayList<String> category;
 
     public Movie()
     {
 
     }
 
-    public Movie(String name, int release, String desc) {
+    public Movie(String name, String release, String desc) {
         this.name = name;
         this.release = release;
         this.desc = desc;
     }
 
-    public Movie(String name, int release, String desc, int duration, String nation, String image, String coverImage, String link){
+    public Movie(String name, String release, String desc, int duration, String nation, String image, String coverImage, String link, ArrayList<String> category){
         this.name = name;
         this.desc = desc;
         this.release = release;
@@ -30,6 +33,7 @@ public class Movie {
         this.image = image;
         this.coverImage = coverImage;
         this.link = link;
+        this.category = category;
     }
 
     public Movie(String name)
@@ -46,11 +50,11 @@ public class Movie {
         return name;
     }
 
-    public void setRelease(int release) {
+    public void setRelease(String release) {
         this.release = release;
     }
 
-    public int getRelease() {
+    public String getRelease() {
         return release;
     }
 
@@ -100,5 +104,13 @@ public class Movie {
 
     public String getNation() {
         return nation;
+    }
+
+    public void setCategory(ArrayList<String> category) {
+        this.category = category;
+    }
+
+    public ArrayList<String> getCategory() {
+        return category;
     }
 }

@@ -35,10 +35,9 @@ import java.util.TimerTask;
 public class HomePageFragment extends Fragment implements MovieItemClickListener {
 
     private ViewPager sliderpaper;
-    FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     MovieAdapter movieAdapter;
-    SliderPagerAdapter adapter;
+    SliderPagerAdapter sliderPagerAdapter;
     ArrayList<Movie> listslide;
 
     @Override
@@ -52,8 +51,8 @@ public class HomePageFragment extends Fragment implements MovieItemClickListener
         View view = inflater.inflate(R.layout.fragment_home_page, container, false);
         sliderpaper = view.findViewById(R.id.silder_paper);
         listslide = (ArrayList<Movie>) getAllMovies();
-        adapter = new SliderPagerAdapter(getActivity(), listslide, HomePageFragment.this) ;
-        sliderpaper.setAdapter(adapter);
+        sliderPagerAdapter = new SliderPagerAdapter(getActivity(), listslide, HomePageFragment.this) ;
+        sliderpaper.setAdapter(sliderPagerAdapter);
 
         //Set up time for changing the theme
         Timer timer = new Timer();
@@ -63,6 +62,21 @@ public class HomePageFragment extends Fragment implements MovieItemClickListener
 
         //Recyclerview Setup
         RecyclerView movieRV = view.findViewById((R.id.rv_movie));
+
+        ArrayList<String> cate = new ArrayList<>();
+        cate.add("Hoạt hình");
+        cate.add("Hài hước");
+        cate.add("Phiêu lưu");
+        cate.add("Điện ảnh");
+        Movie movie = new Movie("Frozen 2", "2019", "Nữ Hoàng Băng Giá 2 kể về câu chuyện cùng dấn thân vào một cuộc phiêu lưu xa xôi thú vị, hai chị em Anna và Elsa đi đến chốn rừng sâu để tìm kiếm sự thật về bí ẩn cổ xưa của vương quốc mình. Tất cả những gì Anna & Elsa biết về bản thân, lịch sử và gia đình của họ đều bị thử thách khi họ bị cuốn vào một chuyến đi đầy quả cảm đến với vùng đất phía bắc bí ẩn ngoài Arendelle được báo trước.", 103, "Mỹ", "https://firebasestorage.googleapis.com/v0/b/allforone-266c9.appspot.com/o/images%2FFrozen%202%20small.jpg?alt=media&token=72331344-d78a-45d8-913e-c1d1872eb6f6", "https://firebasestorage.googleapis.com/v0/b/allforone-266c9.appspot.com/o/images%2FFrozen%202.jpg?alt=media&token=0f51e97f-fd32-4522-ab99-45ca28b664c7", "https://firebasestorage.googleapis.com/v0/b/allforone-266c9.appspot.com/o/movies%2FFrozen%202%20-%20Thuyết%20Minh%20-%20MọtPhim%20TV.mp4?alt=media&token=090b9389-c125-44c0-bb5c-c169975b1e77", cate);
+        databaseReference.child(movie.getName()).setValue(movie);
+
+        ArrayList<String> cate1 = new ArrayList<>();
+        cate1.add("Hài hước");
+        cate1.add("Phiêu lưu");
+        cate1.add("Điện ảnh");
+        Movie movie1 = new Movie("Test", "2019", "Nữ Hoàng Băng Giá 2 kể về câu chuyện cùng dấn thân vào một cuộc phiêu lưu xa xôi thú vị, hai chị em Anna và Elsa đi đến chốn rừng sâu để tìm kiếm sự thật về bí ẩn cổ xưa của vương quốc mình. Tất cả những gì Anna & Elsa biết về bản thân, lịch sử và gia đình của họ đều bị thử thách khi họ bị cuốn vào một chuyến đi đầy quả cảm đến với vùng đất phía bắc bí ẩn ngoài Arendelle được báo trước.", 103, "Mỹ", "https://firebasestorage.googleapis.com/v0/b/allforone-266c9.appspot.com/o/images%2FFrozen%202%20small.jpg?alt=media&token=72331344-d78a-45d8-913e-c1d1872eb6f6", "https://firebasestorage.googleapis.com/v0/b/allforone-266c9.appspot.com/o/images%2FFrozen%202.jpg?alt=media&token=0f51e97f-fd32-4522-ab99-45ca28b664c7", "https://firebasestorage.googleapis.com/v0/b/allforone-266c9.appspot.com/o/movies%2FFrozen%202%20-%20Thuyết%20Minh%20-%20MọtPhim%20TV.mp4?alt=media&token=090b9389-c125-44c0-bb5c-c169975b1e77", cate1);
+        databaseReference.child(movie1.getName()).setValue(movie1);
 
         ArrayList<Movie> movies = (ArrayList<Movie>) getAllMovies();
         movieAdapter = new MovieAdapter(getActivity(), movies, HomePageFragment.this);
@@ -126,7 +140,6 @@ public class HomePageFragment extends Fragment implements MovieItemClickListener
         }
     }
 
-
     private ArrayList<Movie> getAllMovies()
     {
         ArrayList<Movie> movies = new ArrayList<>();
@@ -139,7 +152,7 @@ public class HomePageFragment extends Fragment implements MovieItemClickListener
                     Movie movie = (Movie) movieSnapshot.getValue(Movie.class);
                     movies.add(movie);
                     movieAdapter.notifyDataSetChanged();
-                    adapter.notifyDataSetChanged();
+                    sliderPagerAdapter.notifyDataSetChanged();
                 }
             }
 
@@ -151,6 +164,4 @@ public class HomePageFragment extends Fragment implements MovieItemClickListener
 
         return movies;
     }
-
-
 }

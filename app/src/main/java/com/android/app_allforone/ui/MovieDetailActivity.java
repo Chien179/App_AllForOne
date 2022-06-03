@@ -39,7 +39,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         final String coverImage = getIntent().getExtras().getString("coverImage");
         final String image = getIntent().getExtras().getString("image");
         final String desc = getIntent().getExtras().getString("desc");
-        final int release = getIntent().getExtras().getInt("release");
+        final String release = getIntent().getExtras().getString("release");
         final int duration = getIntent().getExtras().getInt("duration");
         final String nation = getIntent().getExtras().getString("nation");
 
@@ -59,7 +59,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         txtTitle.setText(name);
         txtDuration.setText(Integer.toString(duration) + " Phút");
         txtNation.setText(nation);
-        txtRelease.setText(Integer.toString(release));
+        txtRelease.setText(release);
         txtDesc.setText(desc);
 
         //setup animation
