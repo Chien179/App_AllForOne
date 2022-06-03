@@ -1,8 +1,6 @@
 package com.android.app_allforone.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -12,9 +10,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.android.app_allforone.R;
 import com.android.app_allforone.databinding.ActivityMainBinding;
 import com.android.app_allforone.fragment.HomePageFragment;
-import com.android.app_allforone.fragment.ProfileFragment;
+import com.android.app_allforone.fragment.LoginFragment;
 import com.android.app_allforone.fragment.SearchFragment;
-import com.android.app_allforone.fragment.SettingFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,23 +53,23 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new SearchFragment());
                     break;
                 case R.id.profile:
+                    Fragment fragment;
+
                     //if there is already account logging in, pass data to the profile fragment
-                    ProfileFragment profileFragment = new ProfileFragment();
-                    if (account.length()>0)
-                        {
-                            //initialize bundle and put value then pass argument
-                            Bundle bundle = new Bundle();
-                            bundle.putString("myAccount",account);
-                            profileFragment.setArguments(bundle);
-                        }
-                    replaceFragment(profileFragment);
-                    break;
-                case R.id.setting:
-                    SettingFragment settingFragment = new SettingFragment();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("role",role);
-                    settingFragment.setArguments(bundle);
-                    replaceFragment(settingFragment);
+//                    if (getIntent().getExtras().getString("email") != null){
+//                        ProfileFragment profileFragment = new ProfileFragment();
+//                        fragment = profileFragment;
+//                    }else {
+                        LoginFragment loginFragment = new LoginFragment();
+                        //initialize bundle and put value then pass argument
+                        Bundle bundle = new Bundle();
+                        bundle.putString("myAccount",account);
+                        loginFragment.setArguments(bundle);
+
+                        fragment = loginFragment;
+//                    }
+
+                    replaceFragment(fragment);
                     break;
             }
             return true;
@@ -85,11 +82,5 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
-    }
-
-    public void loginFromSetting(View view)
-    {
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        startActivity(intent);
     }
 }

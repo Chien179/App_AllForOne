@@ -1,26 +1,21 @@
 package com.android.app_allforone.models;
 
-public class User
-{
-    public String email, userName, firstName, lastName, password, image, role;
-    public User(String email, String userName, String firstName, String lastName, String password, String image, String role)
+public class User {
+    private String email, firstName, lastName;
+    private int role;
+    public User(String email, String firstName, String lastName, int role)
     {
         this.email = email;
-        this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.password = password;
-        this.image = image;
         this.role = role;
     }
 
-    public User(String email, String userName, String firstName, String lastName, String password)
+    public User(String email, String firstName, String lastName, String password)
     {
         this.email = email;
-        this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.password = password;
     }
 
     public User()
@@ -34,14 +29,6 @@ public class User
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
 
     public String getFirstName() {
@@ -60,27 +47,11 @@ public class User
         this.lastName = lastName;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
+    public void setRole(int role) {
         this.role = role;
+    }
+
+    public int getRole() {
+        return role;
     }
 }

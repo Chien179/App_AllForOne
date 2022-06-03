@@ -3,20 +3,24 @@ package com.android.app_allforone.fragment;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.android.app_allforone.R;
 import com.android.app_allforone.databinding.FragmentProfileBinding;
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class ProfileFragment extends Fragment
-{
+public class ProfileFragment extends Fragment {
     //Use the concept of View Binding using binding class and database reference
     FragmentProfileBinding fragmentProfileBinding;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -38,51 +42,51 @@ public class ProfileFragment extends Fragment
         super.onCreate(savedInstanceState);
     }
 
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-//    {
-//        //Initialize view
-//        View view = inflater.inflate(R.layout.fragment_profile, container, false);
-//
-//        //Create an object of this binding class
-//        fragmentProfileBinding = FragmentProfileBinding.inflate(getLayoutInflater());
-//
-//        //Identify necessary items
-//        textViewAccount = view.findViewById(R.id.textViewAccountInput);
-//        editTextUsername = view.findViewById(R.id.editTextUsername);
-//        textViewFirstName = view.findViewById(R.id.textViewFirstNameInput);
-//        textViewLastName = view.findViewById(R.id.textViewLastNameInput);
-//        textViewPassword = view.findViewById(R.id.textViewPasswordInput);
-//        btnEditProfile = view.findViewById(R.id.btn_account_edit_username);
-//        imageView = view.findViewById(R.id.imageViewAvatar);
-//
-//        //Check condition if there is an account logging in and retrieve data
-//        if (getArguments() != null)
-//        {
-//            email = getArguments().getString("myAccount");
-//            textViewAccount.setText(email);
-//            getUserByEmail(email);
-//            btnEditProfile.setOnClickListener(view1 -> {
-//                userName = editTextUsername.getText().toString();
-////                databaseReference.child(Objects.requireNonNull(firebaseAuth.getUid())).child("userName").setValue(userName);
-//                Toast.makeText(getActivity(),"Update Username successfully",Toast.LENGTH_SHORT).show();
-//                editTextUsername.setText(userName);
-//            });
-//        } else {
-//            btnEditProfile.setOnClickListener(view12 -> {
-//                userName = editTextUsername.getText().toString();
-////                databaseReference.child(Objects.requireNonNull(firebaseAuth.getUid())).child("userName").setValue(userName);
-//                Toast.makeText(getActivity(),"Update Username successfully",Toast.LENGTH_SHORT).show();
-//                editTextUsername.setText(userName);
-//            });
-//        }
-//
-//        //Handle edit profile button click event
-//
-//        return view;
-//    }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
+        //Initialize view
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-    //Get the document of the Users node with email parameter
+        //Create an object of this binding class
+        fragmentProfileBinding = FragmentProfileBinding.inflate(getLayoutInflater());
+
+        //Identify necessary items
+        textViewAccount = view.findViewById(R.id.textViewAccountInput);
+        editTextUsername = view.findViewById(R.id.editTextUsername);
+        textViewFirstName = view.findViewById(R.id.textViewFirstNameInput);
+        textViewLastName = view.findViewById(R.id.textViewLastNameInput);
+        textViewPassword = view.findViewById(R.id.textViewPasswordInput);
+        btnEditProfile = view.findViewById(R.id.btn_account_edit_username);
+        imageView = view.findViewById(R.id.imageViewAvatar);
+
+        //Check condition if there is an account logging in and retrieve data
+        if (getArguments() != null)
+        {
+            email = getArguments().getString("myAccount");
+            textViewAccount.setText(email);
+//            getUserByEmail(email);
+            btnEditProfile.setOnClickListener(view1 -> {
+                userName = editTextUsername.getText().toString();
+//                databaseReference.child(Objects.requireNonNull(firebaseAuth.getUid())).child("userName").setValue(userName);
+                Toast.makeText(getActivity(),"Update Username successfully",Toast.LENGTH_SHORT).show();
+                editTextUsername.setText(userName);
+            });
+        } else {
+            btnEditProfile.setOnClickListener(view12 -> {
+                userName = editTextUsername.getText().toString();
+//                databaseReference.child(Objects.requireNonNull(firebaseAuth.getUid())).child("userName").setValue(userName);
+                Toast.makeText(getActivity(),"Update Username successfully",Toast.LENGTH_SHORT).show();
+                editTextUsername.setText(userName);
+            });
+        }
+
+        //Handle edit profile button click event
+
+        return view;
+    }
+
+//    Get the document of the Users node with email parameter
 //    public void getUserByEmail(String email)
 //    {
 //        //Get reference for the Users node
