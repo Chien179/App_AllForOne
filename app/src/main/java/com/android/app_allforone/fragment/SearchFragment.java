@@ -2,28 +2,25 @@ package com.android.app_allforone.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.app_allforone.R;
-import com.android.app_allforone.ui.SearchedMovieActivity;
 import com.android.app_allforone.adapters.CategoryAdapter;
 import com.android.app_allforone.models.Movie;
+import com.android.app_allforone.ui.SearchedMovieActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SearchFragment extends Fragment {
-
-    private RecyclerView rv_movie_search;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,15 +33,15 @@ public class SearchFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
 
         //Recyclerview Setup
-        rv_movie_search = view.findViewById(R.id.rv_searched_movie);
+        RecyclerView rv_movie_search = view.findViewById(R.id.rv_searched_movie);
         List<Movie> lstMovie = new ArrayList<>();
 
-        lstMovie.add(new Movie("Anime", Integer.toString(R.drawable.category_anime)));
-        lstMovie.add(new Movie("Animal", Integer.toString(R.drawable.category_anime)));
-        lstMovie.add(new Movie("Science", Integer.toString(R.drawable.category_anime)));
-        lstMovie.add(new Movie("Food", Integer.toString(R.drawable.category_anime)));
-        lstMovie.add(new Movie("Documentary", Integer.toString(R.drawable.category_anime)));
-        lstMovie.add(new Movie("Popular", Integer.toString(R.drawable.category_anime)));
+//        lstMovie.add(new Movie("Anime", Integer.toString(R.drawable.category_anime)));
+//        lstMovie.add(new Movie("Animal", Integer.toString(R.drawable.category_anime)));
+//        lstMovie.add(new Movie("Science", Integer.toString(R.drawable.category_anime)));
+//        lstMovie.add(new Movie("Food", Integer.toString(R.drawable.category_anime)));
+//        lstMovie.add(new Movie("Documentary", Integer.toString(R.drawable.category_anime)));
+//        lstMovie.add(new Movie("Popular", Integer.toString(R.drawable.category_anime)));
 
         CategoryAdapter categoryAdapter = new CategoryAdapter(getActivity(), lstMovie);
         rv_movie_search.setAdapter(categoryAdapter);

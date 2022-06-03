@@ -7,78 +7,29 @@
     android:background="@color/colorPrimary"
     tools:context=".ui.StreamVideoActivity">
 
-    <VideoView
-        android:id="@+id/videoViewMain"
+    <LinearLayout
+        android:id="@+id/layoutPlayer"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
-        android:backgroundTint="@color/black"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="1dp"
-        android:background="@color/blue"
-        app:layout_constraintTop_toBottomOf="@+id/videoViewMain"
-        tools:layout_editor_absoluteX="0dp">
+        <VideoView
+            android:id="@+id/videoViewMain"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/black" />
 
-        <Button
-            android:id="@+id/playBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:backgroundTint="@color/blue"
-            android:text="PLAY"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteX="53dp"
-            tools:layout_editor_absoluteY="509dp" />
-
-
-        <TextView
-            android:id="@+id/currentTimer"
-            android:layout_width="60dp"
-            android:layout_height="50dp"
-            android:background="@color/blue"
-            android:paddingTop="10dp"
-            android:text="0:00"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/playBtn"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ProgressBar
-            android:id="@+id/videoProgress"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="190dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@id/currentTimer"
-            tools:visibility="visible" />
-
-        <TextView
-            android:id="@+id/durationTimer"
-            android:layout_width="60dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="0dp"
-            android:background="@color/blue"
-            android:paddingTop="10dp"
-            android:text="01:07"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/videoProgress"
-            app:layout_constraintTop_toTopOf="parent" />
+        <MediaController
+            android:id="@+id/mediaController"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
     </LinearLayout>
 
     <ImageView
@@ -88,8 +39,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCategory"
-        app:srcCompat="@drawable/fairy_tail" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewCategory" />
 
     <TextView
         android:id="@+id/textViewTitle"
@@ -104,7 +54,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.139"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/layoutPlayer" />
 
     <TextView
         android:id="@+id/textViewCategory"
@@ -145,7 +95,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="98dp"
         android:backgroundTint="@color/blue"
-        android:text="@string/watch"
+        android:text="@string/play"
         android:textColor="@color/white"
         android:textSize="17dp"
         android:textStyle="bold"
@@ -176,8 +126,7 @@
         android:layout_marginStart="11dp"
         android:layout_marginTop="25dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:srcCompat="@drawable/fire_force" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
         android:id="@+id/textViewTitle3"
@@ -217,7 +166,7 @@
         android:layout_marginTop="19dp"
         android:layout_marginEnd="126dp"
         android:backgroundTint="@color/blue"
-        android:text="@string/watch"
+        android:text="@string/play"
         android:textColor="@color/white"
         android:textSize="17dp"
         android:textStyle="bold"

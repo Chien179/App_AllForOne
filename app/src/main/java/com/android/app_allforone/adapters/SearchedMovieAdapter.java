@@ -1,7 +1,6 @@
 package com.android.app_allforone.adapters;
 
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.app_allforone.R;
 import com.android.app_allforone.models.Movie;
-import com.bumptech.glide.Glide;
+import com.android.app_allforone.utils.DownloadImageTask;
 
 import java.util.List;
 
@@ -38,12 +37,9 @@ public class SearchedMovieAdapter extends RecyclerView.Adapter<SearchedMovieAdap
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int position){
-        myViewHolder.tvTitle.setText(mData.get(position).getTitle());
-//        myViewHolder.imgMovie.setImageResource(Integer.parseInt(mData.get(position).getCoverPhoto()));
-        Uri uri = Uri.parse(mData.get(position).getCoverPhoto());
-        Glide.with(context)
-                .load(uri)
-                .into(myViewHolder.imgMovie);
+        myViewHolder.tvTitle.setText(mData.get(position).getName());
+
+        new DownloadImageTask(myViewHolder.imgMovie).execute(mData.get(position).getCoverImage());
     }
 
     @Override
@@ -52,8 +48,8 @@ public class SearchedMovieAdapter extends RecyclerView.Adapter<SearchedMovieAdap
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        private TextView tvTitle;
-        private ImageView imgMovie;
+        private final TextView tvTitle;
+        private final ImageView imgMovie;
 
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
@@ -63,7 +59,7 @@ public class SearchedMovieAdapter extends RecyclerView.Adapter<SearchedMovieAdap
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    movieItemClickListener.onMovieClick(mData.get(getAdapterPosition()), imgMovie);
+                    movieItemClickListener.onMovieItemClick(mData.get(getAdapterPosition()), imgMovie);
                 }
             });
         }

@@ -1,7 +1,6 @@
 package com.android.app_allforone.adapters;
 
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,17 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.app_allforone.R;
 import com.android.app_allforone.models.Movie;
-import com.bumptech.glide.Glide;
+import com.android.app_allforone.utils.DownloadImageTask;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> {
     Context context;
-    List<Movie> mData;
+    ArrayList<Movie> mData;
 
     MovieItemClickListener movieItemClickListener;
 
-    public MovieAdapter(Context context, List<Movie> mData, MovieItemClickListener listener) {
+    public MovieAdapter(Context context, ArrayList<Movie> mData, MovieItemClickListener listener) {
         this.context = context;
         this.mData = mData;
         this.movieItemClickListener = listener;
@@ -38,12 +37,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int position) {
-        myViewHolder.TvTitle.setText(mData.get(position).getTitle());
-        Uri uri = Uri.parse(mData.get(position).getThumbnail());
-//        myViewHolder.ImgMovie.setImageURI(uri);
-        Glide.with(context)
-                .load(uri)
-                .into(myViewHolder.ImgMovie);
+        myViewHolder.txtTitle.setText(mData.get(position).getName());
+        new DownloadImageTask(myViewHolder.ImgMovie).execute(mData.get(position).getImage());
     }
 
     @Override
@@ -53,21 +48,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView TvTitle;
-        private ImageView ImgMovie;
+        private final TextView txtTitle;
+        private final ImageView ImgMovie;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            TvTitle = itemView.findViewById(R.id.movie_item_title);
-            ImgMovie = itemView.findViewById(R.id.movie_item_img);
+            txtTitle = itemView.findViewById(R.id.movieItemTitle);
+            ImgMovie = itemView.findViewById(R.id.movieItemImg);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    movieItemClickListener.onMovieClick(mData.get(getAdapterPosition()), ImgMovie);
-                }
-            });
+            itemView.setOnClickListener(view -> movieItemClickListener.onMovieItemClick(mData.get(getAdapterPosition()), ImgMovie));
         }
     }
 }

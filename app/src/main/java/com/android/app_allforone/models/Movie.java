@@ -1,103 +1,104 @@
 package com.android.app_allforone.models;
 
 public class Movie {
-    private String title;
-    private String description;
-    private String thumbnail;
-    private String category;
-    private String rating;
-    private String streamingLink;
-    private String coverPhoto;
+    private String coverImage;
+    private String desc;
+    private int duration;
+    private String image;
+    private String link;
+    private String name;
+    private String nation;
+    private int release;
 
     public Movie()
     {
 
     }
 
-    public Movie(String title, String thumbnail, String coverPhoto) {
-        this.title = title;
-        this.thumbnail = thumbnail;
-        this.coverPhoto = coverPhoto;
+    public Movie(String name, int release, String desc) {
+        this.name = name;
+        this.release = release;
+        this.desc = desc;
     }
 
+    public Movie(String name, int release, String desc, int duration, String nation, String image, String coverImage, String link){
+        this.name = name;
+        this.desc = desc;
+        this.release = release;
+        this.duration = duration;
+        this.nation = nation;
+        this.image = image;
+        this.coverImage = coverImage;
+        this.link = link;
+    }
 
-    public Movie(String title, String thumbnail)
+    public Movie(String name)
     {
-        this.thumbnail = thumbnail;
-        this.title = title;
+        this.name = name;
     }
 
 
-    public Movie(String title, String thumbnail, String coverPhoto, String category) {
-        this.title = title;
-        this.thumbnail = thumbnail;
-        this.coverPhoto = coverPhoto;
-        this.category = category;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Movie(String title, String description, String thumbnail, String category, String rating, String streamingLink) {
-        this.title = title;
-        this.description = description;
-        this.thumbnail = thumbnail;
-        this.category = category;
-        this.rating = rating;
-        this.streamingLink = streamingLink;
+    public String getName() {
+        return name;
     }
 
-
-    public String getCoverPhoto() {
-        return coverPhoto;
+    public void setRelease(int release) {
+        this.release = release;
     }
 
-    public void setCoverPhoto(String coverPhoto) {
-        this.coverPhoto = coverPhoto;
+    public int getRelease() {
+        return release;
     }
 
-    public String getTitle() {
-        return title;
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getDesc() {
+        return desc;
     }
 
-    public String getDescription() {
-        return description;
+    public void setLink(String link) {
+        this.link = link;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public String getLink() {
+        return link;
     }
 
-    public String getThumbnail() {
-        return thumbnail;
+    public void setCoverImage(String coverImage) {
+        this.coverImage = coverImage;
     }
 
-    public void setThumbnail(String thumbnail) {
-        this.thumbnail = thumbnail;
+    public int getDuration() {
+        return duration;
     }
 
-    public String getCategory() {
-        return category;
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public String getRating() {
-        return rating;
+    public String getImage() {
+        return image;
     }
 
-    public void setRating(String rating) {
-        this.rating = rating;
+    public String getCoverImage() {
+        return coverImage;
     }
 
-    public String getStreamingLink() {
-        return streamingLink;
+    public void setNation(String nation) {
+        this.nation = nation;
     }
 
-    public void setStreamingLink(String streamingLink) {
-        this.streamingLink = streamingLink;
+    public String getNation() {
+        return nation;
     }
 }

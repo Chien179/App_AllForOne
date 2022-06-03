@@ -59,7 +59,6 @@
         android:layout_marginTop="34dp"
         android:background="@drawable/button_login_layout"
         android:backgroundTint="#FFB700"
-        android:onClick="login"
         android:text="@string/login"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"

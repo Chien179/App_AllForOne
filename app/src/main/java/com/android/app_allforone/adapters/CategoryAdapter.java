@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.app_allforone.R;
 import com.android.app_allforone.models.Movie;
+import com.android.app_allforone.utils.DownloadImageTask;
 
 import java.util.List;
 
@@ -28,20 +29,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.category_item, viewGroup, false);
-        return new CategoryAdapter.MyViewHolder(view);
+        return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CategoryAdapter.MyViewHolder myViewHolder, int position) {
-        myViewHolder.TvTitle.setText(mData.get(position).getTitle());
-//        myViewHolder.ImgMovie.setImageResource(mData.getThumbnail());
-//        mData.get(position).getThumbnail()
-        //Uri uri = Uri.parse(mData.get(position).getThumbnail());
-//        myViewHolder.ImgMovie.setImageURI(uri);
-       // Glide.with(context)
-                //.load(uri)
-                //.into(myViewHolder.ImgMovie);
-        myViewHolder.ImgMovie.setImageResource(Integer.parseInt(mData.get(position).getThumbnail()));
+        myViewHolder.TvTitle.setText(mData.get(position).getName());
+        new DownloadImageTask(myViewHolder.ImgMovie).execute(mData.get(position).getImage());
 
     }
 
@@ -50,10 +44,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
         return mData.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView TvTitle;
-        private ImageView ImgMovie;
+        private final TextView TvTitle;
+        private final ImageView ImgMovie;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);

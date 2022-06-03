@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     String account = "", role = "";
-    Integer count = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
